@@ -55,8 +55,8 @@ inquirer.prompt([
 
 // TODO: Create a function to write README file
 const fileName = 'README.md';
-function writeToFile(fileName, data) {
-    fs.writeFile(fileName, data, (err) => {
+function writeToFile(fileName, inputs) {
+    fs.writeFile(fileName, inputs, (err) => {
         if (err) {
             console.error('Error writing file:', err);
         } else {
@@ -66,8 +66,17 @@ function writeToFile(fileName, data) {
 }
 
 function createAndWriteFile(answers) {
-    const content = `
+    const fileContent = `
 # ${answers.title}
+
+# Table of Contents 
+    Description 
+    Installation 
+    Usage 
+    Contribution 
+    Testing 
+    License 
+    Questions 
 
 ## Description
 ${answers.description}
@@ -91,7 +100,7 @@ This project is licensed under the ${answers.license} license.
 GitHub: [${answers.username}](https://github.com/${answers.username})
 Email: ${answers.email}
 `;
-    writeToFile(fileName, content); // Call the writeToFile function here
+    writeToFile(fileName, fileContent); // Call the writeToFile function here
 }
 
 // TODO: Create a function to initialize app
